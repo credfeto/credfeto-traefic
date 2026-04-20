@@ -4,13 +4,20 @@ services:
     container_name: "traefik"
     command:
       - "--configFile=/etc/traefik/traefik.yml"
+    environment:
+      - CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL}
+      - CF_DNS_API_TOKEN=${CF_DNS_API_TOKEN}
     ports:
-      - "443:443"     # HTTPS
-      - "8080:8080"   # Traefik dashboard (be careful with this in production)
+      - "443:443/tcp"
+      - "443:443/udp"
     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"  # So Traefik can discover other services
       - "./traefik.yml:/etc/traefik/traefik.yml"
       - "./dynamic_conf.yml:/etc/traefik/dynamic_conf.yml"
       - "/etc/traefik/acme.json:/etc/traefik/acme.json"  # Storage for ACME (Let's Encrypt)
-    labels:
-      - "traefik.enable=true"
+
+  watchtower:
+    image: nickfedor/watchtower:latest
+    container_name: watchtower
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    command: --interval 86400

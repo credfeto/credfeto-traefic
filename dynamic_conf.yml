@@ -145,7 +145,7 @@ http:
       tls:
         certResolver: letsencrypt
       middlewares:
-        - homeassistant-header
+        - home-header
 
     docker-registry-router:
       rule: "Host(`docker-registry.markridgwell.com`)"
@@ -341,6 +341,30 @@ http:
           - url: "https://192.168.10.10:5555"
           - url: "https://192.168.10.20:5555"
 
+    api-nuget-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
+    funfair-nuget-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
+    npm-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
+    dotnet-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
   middlewares:
     # Middleware for each header
     pacman-header:
@@ -378,7 +402,7 @@ http:
         customRequestHeaders:
           Host: "audiobookshelf.local"
 
-    homeassistant-header:
+    home-header:
       headers:
         customRequestHeaders:
           Host: "home.local"
@@ -427,3 +451,28 @@ http:
       headers:
         customRequestHeaders:
           Host: "dev-cache-02.local"
+
+    api-nuget-header:
+      headers:
+        customRequestHeaders:
+          Host: "api-nuget.local"
+
+    funfair-nuget-header:
+      headers:
+        customRequestHeaders:
+          Host: "funfair-nuget.local"
+
+    funfair-prerelease-nuget-header:
+      headers:
+        customRequestHeaders:
+          Host: "funfair-prerelease-nuget.local"
+
+    npm-header:
+      headers:
+        customRequestHeaders:
+          Host: "npm.local"
+
+    dotnet-header:
+      headers:
+        customRequestHeaders:
+          Host: "dotnet.local"
