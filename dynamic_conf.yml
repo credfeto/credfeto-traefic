@@ -1,8 +1,40 @@
 # dynamic_conf.yml
 http:
   serversTransports:
-    insecure:
+    pacman:
       insecureSkipVerify: true
+      serverName: "pacman.local"
+    aur:
+      insecureSkipVerify: true
+      serverName: "aur.local"
+    aur-repo:
+      insecureSkipVerify: true
+      serverName: "aur-repo.local"
+    mastodon:
+      insecureSkipVerify: true
+      serverName: "mastodon.markridgwell.com"
+    defi:
+      insecureSkipVerify: true
+      serverName: "defi.local"
+    ollama:
+      insecureSkipVerify: true
+      serverName: "ollama.local"
+
+    api-nuget:
+      insecureSkipVerify: true
+      serverName: "api.nuget.local"
+    funfair-nuget:
+      insecureSkipVerify: true
+      serverName: "funfair.nuget.local"
+    funfair-prerelease-nuget:
+      insecureSkipVerify: true
+      serverName: "funfair-prerelease.nuget.local"
+    npm:
+      insecureSkipVerify: true
+      serverName: "npm.local"
+    dotnet:
+      insecureSkipVerify: true
+      serverName: "builds.dotnet.local"
 
   routers:
     # Dashboard router
@@ -249,14 +281,14 @@ http:
     # Services for each router
     pacman-service:
       loadBalancer:
-        serversTransport: insecure
+        serversTransport: pacman
         servers:
           - url: "https://192.168.150.200:7777"
           - url: "https://192.168.150.201:7777"
 
     aur-service:
       loadBalancer:
-        serversTransport: insecure
+        serversTransport: aur
         servers:
           - url: "https://192.168.150.200:7776"
           - url: "https://192.168.150.201:7776"
@@ -269,7 +301,7 @@ http:
 
     aur-repo-service:
       loadBalancer:
-        serversTransport: insecure
+        serversTransport: aur-repo
         servers:
           - url: "https://192.168.150.10:5555"
           - url: "https://192.168.150.20:5555"
@@ -306,99 +338,95 @@ http:
 
     mastodon-service:
       loadBalancer:
-        serversTransport: insecure
+        serversTransport: mastodon
         servers:
           - url: "https://192.168.150.152:443"
 
     defi-service:
       loadBalancer:
-        serversTransport: insecure
+        serversTransport: defi
         servers:
           - url: "https://192.168.150.10:5555"
           - url: "https://192.168.150.20:5555"
 
     ollama-service:
       loadBalancer:
-        serversTransport: insecure
+        serversTransport: ollama
         servers:
           - url: "https://192.168.150.10:5555"
           - url: "https://192.168.150.20:5555"
 
     linux-cache-01-service:
       loadBalancer:
-        serversTransport: insecure
         servers:
-          - url: "https://192.168.150.200:8080"
+          - url: "http://192.168.150.200:8080"
 
     linux-cache-02-service:
       loadBalancer:
-        serversTransport: insecure
         servers:
-          - url: "https://192.168.150.201:8080"
+          - url: "http://192.168.150.201:8080"
 
     dev-cache-01-service:
       loadBalancer:
-        serversTransport: insecure
         servers:
-          - url: "https://192.168.150.100:8080"
+          - url: "http://192.168.150.100:8080"
 
     dev-cache-02-service:
       loadBalancer:
-        serversTransport: insecure
         servers:
-          - url: "https://192.168.150.101:8080"
+          - url: "http://192.168.150.101:8080"
 
     api-nuget-service:
       loadBalancer:
+        serversTransport: api-nuget
         healthCheck:
           path: /ping
           interval: 30s
           timeout: 5s
-        serversTransport: insecure
         servers:
           - url: "https://192.168.150.100:5555"
           - url: "https://192.168.150.101:5555"
 
     funfair-nuget-service:
       loadBalancer:
+        serversTransport: funfair-nuget
         healthCheck:
           path: /ping
           interval: 30s
           timeout: 5s
-        serversTransport: insecure
         servers:
           - url: "https://192.168.150.100:5555"
           - url: "https://192.168.150.101:5555"
 
     funfair-prerelease-nuget-service:
       loadBalancer:
+        serversTransport: funfair-prerelease-nuget
         healthCheck:
           path: /ping
           interval: 30s
           timeout: 5s
-        serversTransport: insecure
         servers:
           - url: "https://192.168.150.100:5555"
           - url: "https://192.168.150.101:5555"
 
     npm-service:
-#      loadBalancer:
-#        healthCheck:
-#          path: /-/ping
-#          interval: 30s
-#          timeout: 5s
-        serversTransport: insecure
+      loadBalancer:
+        serversTransport: npm
+        healthCheck:
+          path: /-/ping
+          interval: 30s
+          timeout: 5s
         servers:
           - url: "https://192.168.150.100:5555"
           - url: "https://192.168.150.101:5555"
 
     dotnet-service:
       loadBalancer:
+        serversTransport: dotnet
         healthCheck:
           path: /ping
           interval: 30s
           timeout: 5s
-        serversTransport: insecure
         servers:
           - url: "https://192.168.150.100:5555"
           - url: "https://192.168.150.101:5555"
