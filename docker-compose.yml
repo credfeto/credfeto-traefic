@@ -1,12 +1,12 @@
 services:
   traefik:
-    image: "traefik:v2.9"  # Use latest stable version of Traefik
+    image: "traefik:v3.6.13"
     container_name: "traefik"
     restart: always
     command:
       - "--configFile=/etc/traefik/traefik.yml"
     environment:
-      - CLOUDFLARE_EMAIL=${CLOUDFLARE_EMAIL}
+      - TRAEFIK_CERTIFICATESRESOLVERS_LETSENCRYPT_ACME_EMAIL=${CLOUDFLARE_EMAIL}
       - CF_DNS_API_TOKEN=${CF_DNS_API_TOKEN}
     ports:
       - "443:443/tcp"

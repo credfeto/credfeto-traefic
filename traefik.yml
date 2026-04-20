@@ -20,8 +20,7 @@ entryPoints:
           - main: "markridgwell.com"
             sans:
               - "*.markridgwell.com"
-    http3:
-      advertisedPort: 443
+    http3: {}
     forwardedHeaders:
       trustedIPs:
         - "10.0.0.0/8"
@@ -34,7 +33,7 @@ entryPoints:
 certificatesResolvers:
   letsencrypt:
     acme:
-      email: ${CLOUDFLARE_EMAIL}
+
       storage: /etc/traefik/acme/acme.json
       dnsChallenge:
         provider: cloudflare
