@@ -19,6 +19,9 @@ http:
     ollama:
       insecureSkipVerify: true
       serverName: "ollama.local"
+    flathub:
+      insecureSkipVerify: true
+      serverName: "flathub.markridgwell.com"
 
     api-nuget:
       insecureSkipVerify: true
@@ -295,9 +298,10 @@ http:
 
     flathub-service:
       loadBalancer:
+        serversTransport: flathub
         servers:
-          - url: "http://192.168.150.200:7777"
-          - url: "http://192.168.150.201:7777"
+          - url: "https://192.168.150.200:7777"
+          - url: "https://192.168.150.201:7777"
 
     aur-repo-service:
       loadBalancer:
