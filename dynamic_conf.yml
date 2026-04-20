@@ -382,11 +382,11 @@ http:
           - url: "https://192.168.150.101:5555"
 
     npm-service:
-      loadBalancer:
-        healthCheck:
-          path: /-/ping
-          interval: 30s
-          timeout: 5s
+#      loadBalancer:
+#        healthCheck:
+#          path: /-/ping
+#          interval: 30s
+#          timeout: 5s
         serversTransport: insecure
         servers:
           - url: "https://192.168.150.100:5555"
