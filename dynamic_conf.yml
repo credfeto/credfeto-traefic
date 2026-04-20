@@ -275,7 +275,7 @@ http:
     homeassistant-service:
       loadBalancer:
         servers:
-          - url: "http://192.168.150.10:8123"
+          - url: "http://192.168.34.8:8123"
 
     audiobookshelf-service:
       loadBalancer:
@@ -373,7 +373,7 @@ http:
     flathub-header:
       headers:
         customRequestHeaders:
-          Host: "flathub.local"
+          Host: "flathub.markridgwell.com"
 
     aur-repo-header:
       headers:
@@ -383,17 +383,17 @@ http:
     photos-header:
       headers:
         customRequestHeaders:
-          Host: "photos.local"
+          Host: "photos.markridgwell.com"
 
     homeassistant-header:
       headers:
         customRequestHeaders:
-          Host: "homeassistant.local"
+          Host: "homeassistant.markridgwell.com"
 
     audiobookshelf-header:
       headers:
         customRequestHeaders:
-          Host: "audiobookshelf.local"
+          Host: "audiobookshelf.markridgwell.com"
 
     home-header:
       headers:
