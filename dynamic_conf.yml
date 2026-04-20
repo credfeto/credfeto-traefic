@@ -412,10 +412,6 @@ http:
     npm-service:
       loadBalancer:
         serversTransport: npm
-        healthCheck:
-          path: /-/ping
-          interval: 30s
-          timeout: 5s
         servers:
           - url: "https://192.168.150.100:5555"
           - url: "https://192.168.150.101:5555"
