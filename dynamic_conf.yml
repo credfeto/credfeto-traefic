@@ -270,44 +270,37 @@ http:
     photos-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "http://192.168.10.154:2283"
 
     homeassistant-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "http://192.168.10.10:8123"
 
     audiobookshelf-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "http://192.168.10.16:8080"
 
     home-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "http://192.168.10.150:8080"
 
     docker-registry-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "http://192.168.10.202:8080"
 
     docker-cache-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "http://192.168.10.202:8081"
 
     mastodon-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "https://192.168.10.152:443"
 
     defi-service:
       loadBalancer:
