@@ -16,6 +16,10 @@ entryPoints:
     http:
       tls:
         certResolver: letsencrypt
+        domains:
+          - main: "markridgwell.com"
+            sans:
+              - "*.markridgwell.com"
     http3:
       advertisedPort: 443
     forwardedHeaders:
