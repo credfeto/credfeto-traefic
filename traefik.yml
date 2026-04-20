@@ -1,0 +1,64 @@
+api:
+  insecure: false  # We are securing the API via dashboard router (auth with TLS)
+  dashboard: true
+  debug: true  # Enable debug for logs (remove for production)
+
+log:
+  level: INFO  # Change to DEBUG for more detailed logs (good for development)
+  fields:
+    service: traefik
+
+entryPoints:
+  web-secure:
+    address: ":443"
+    http:
+      tls:
+        certResolver: letsencrypt
+
+# ACME configuration (Let's Encrypt DNS challenge using Cloudflare)
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: ${CLOUDFLARE_EMAIL}  # Use the email from the .env file
+      storage: acme.json  # Location to store certs
+      dnsChallenge:
+        provider: cloudflare
+        delayBeforeCheck: 0
+        resolvers:
+          - "8.8.8.8:53"
+          - "8.8.4.4:53"
+        apiToken: ${CLOUDFLARE_API_TOKEN}  # Use the token from the .env file
+
+# Enable Traefik dashboard and API (but with security enabled via header or middleware)
+api:
+  dashboard: true
+  insecure: false
+
+# Define log levels and logging output
+log:
+  level: INFO  # You can change this to DEBUG if more verbose logs are needed
+
+# Define access logs (optional)
+accessLog:
+  filePath: "/var/log/traefik/access.log"  # Or configure where access logs should go
+  format: common  # or json
+
+# Providers configuration (Docker, file, etc)
+providers:
+  file:
+    filename: "/etc/traefik/dynamic_conf.yml"  # Link to the dynamic configuration file
+    watch: true  # Watch for changes in the dynamic file
+  docker:
+    exposedByDefault: false  # Only containers with appropriate labels will be exposed
+    network: traefik  # Traefik Docker network name
+
+# Security options - Trusted IP ranges
+accessControl:
+  trustedIPs:
+    - "10.0.0.0/8"        # RFC1918 IPv4 private network (10.0.0.0 - 10.255.255.255)
+    - "172.16.0.0/12"     # RFC1918 IPv4 private network (172.16.0.0 - 172.31.255.255)
+    - "192.168.0.0/16"    # RFC1918 IPv4 private network (192.168.0.0 - 192.168.255.255)
+    - "fc00::/7"          # RFC4193 (IPv6 private address space: fc00:: - fdff:ffff:ffff:ffff:ffff:ffff:ffff:ffff)
+    - "fe80::/10"         # Link-local IPv6 addresses (fe80:: - febf:ffff:ffff:ffff:ffff:ffff:ffff:ffff)
+
+# Optionally set other general settings like network, etc.

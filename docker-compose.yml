@@ -1,0 +1,16 @@
+services:
+  traefik:
+    image: "traefik:v2.9"  # Use latest stable version of Traefik
+    container_name: "traefik"
+    command:
+      - "--configFile=/etc/traefik/traefik.yml"
+    ports:
+      - "443:443"     # HTTPS
+      - "8080:8080"   # Traefik dashboard (be careful with this in production)
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"  # So Traefik can discover other services
+      - "./traefik.yml:/etc/traefik/traefik.yml"
+      - "./dynamic_conf.yml:/etc/traefik/dynamic_conf.yml"
+      - "/etc/traefik/acme.json:/etc/traefik/acme.json"  # Storage for ACME (Let's Encrypt)
+    labels:
+      - "traefik.enable=true"

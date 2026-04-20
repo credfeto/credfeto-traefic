@@ -1,0 +1,429 @@
+# dynamic_conf.yml
+http:
+  routers:
+    # Dashboard router
+    traefik-dashboard:
+      rule: "Host(`proxy.markridgwell.com`)"
+      service: api@internal
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      # No middleware for authentication now
+
+    # API NuGet router
+    api-nuget-router:
+      rule: "Host(`api-nuget.markridgwell.com`)"
+      service: api-nuget-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-nuget-header
+
+    # Funfair NuGet router
+    funfair-nuget-router:
+      rule: "Host(`funfair-nuget.markridgwell.com`)"
+      service: funfair-nuget-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - funfair-nuget-header
+
+    # Funfair Prerelease NuGet router
+    funfair-prerelease-nuget-router:
+      rule: "Host(`funfair-prerelease-nuget.markridgwell.com`)"
+      service: funfair-nuget-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - funfair-prerelease-nuget-header
+
+    # New npm router
+    npm-router:
+      rule: "Host(`npm.markridgwell.com`)"
+      service: npm-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - npm-header
+
+    # New dotnet router
+    dotnet-router:
+      rule: "Host(`dotnet.markridgwell.com`)"
+      service: dotnet-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - dotnet-header
+
+    # New hosts
+    pacman-router:
+      rule: "Host(`pacman.markridgwell.com`)"
+      service: pacman-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - pacman-header
+
+    aur-router:
+      rule: "Host(`aur.markridgwell.com`)"
+      service: aur-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - aur-header
+
+    flathub-router:
+      rule: "Host(`flathub.markridgwell.com`)"
+      service: flathub-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - flathub-header
+
+    aur-repo-router:
+      rule: "Host(`aur-repo.markridgwell.com`)"
+      service: aur-repo-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - aur-repo-header
+
+    photos-router:
+      rule: "Host(`photos.markridgwell.com`)"
+      service: photos-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - photos-header
+
+    homeassistant-router:
+      rule: "Host(`homeassistant.markridgwell.com`)"
+      service: homeassistant-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - homeassistant-header
+
+    audiobookshelf-router:
+      rule: "Host(`audiobookshelf.markridgwell.com`)"
+      service: audiobookshelf-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - audiobookshelf-header
+
+    home-router:
+      rule: "Host(`home.markridgwell.com`)"
+      service: home-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - homeassistant-header
+
+    docker-registry-router:
+      rule: "Host(`docker-registry.markridgwell.com`)"
+      service: docker-registry-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - docker-registry-header
+
+    docker-cache-router:
+      rule: "Host(`docker-cache.markridgwell.com`)"
+      service: docker-cache-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - docker-cache-header
+
+    mastodon-router:
+      rule: "Host(`mastodon.markridgwell.com`)"
+      service: mastodon-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - mastodon-header
+
+    defi-router:
+      rule: "Host(`defi.markridgwell.com`)"
+      service: defi-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - defi-header
+
+    ollama-router:
+      rule: "Host(`ollama.markridgwell.com`)"
+      service: ollama-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - ollama-header
+
+    linux-cache-01-router:
+      rule: "Host(`linux-cache-01.markridgwell.com`)"
+      service: linux-cache-01-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - linux-cache-01-header
+
+    linux-cache-02-router:
+      rule: "Host(`linux-cache-02.markridgwell.com`)"
+      service: linux-cache-02-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - linux-cache-02-header
+
+    dev-cache-01-router:
+      rule: "Host(`dev-cache-01.markridgwell.com`)"
+      service: dev-cache-01-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - dev-cache-01-header
+
+    dev-cache-02-router:
+      rule: "Host(`dev-cache-02.markridgwell.com`)"
+      service: dev-cache-02-service
+      entryPoints:
+        - web-secure
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - dev-cache-02-header
+
+  services:
+    # Services for each router
+    pacman-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
+    aur-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
+    flathub-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
+    aur-repo-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
+    photos-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
+    homeassistant-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
+    audiobookshelf-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
+    home-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
+    docker-registry-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
+    docker-cache-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
+    mastodon-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
+    defi-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
+    ollama-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
+    linux-cache-01-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
+    linux-cache-02-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
+    dev-cache-01-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
+    dev-cache-02-service:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10:5555"
+          - url: "https://192.168.10.20:5555"
+
+  middlewares:
+    # Middleware for each header
+    pacman-header:
+      headers:
+        customRequestHeaders:
+          Host: "pacman.local"
+
+    aur-header:
+      headers:
+        customRequestHeaders:
+          Host: "aur.local"
+
+    flathub-header:
+      headers:
+        customRequestHeaders:
+          Host: "flathub.local"
+
+    aur-repo-header:
+      headers:
+        customRequestHeaders:
+          Host: "aur-repo.local"
+
+    photos-header:
+      headers:
+        customRequestHeaders:
+          Host: "photos.local"
+
+    homeassistant-header:
+      headers:
+        customRequestHeaders:
+          Host: "homeassistant.local"
+
+    audiobookshelf-header:
+      headers:
+        customRequestHeaders:
+          Host: "audiobookshelf.local"
+
+    homeassistant-header:
+      headers:
+        customRequestHeaders:
+          Host: "home.local"
+
+    docker-registry-header:
+      headers:
+        customRequestHeaders:
+          Host: "docker-registry.local"
+
+    docker-cache-header:
+      headers:
+        customRequestHeaders:
+          Host: "docker-cache.local"
+
+    mastodon-header:
+      headers:
+        customRequestHeaders:
+          Host: "mastodon.local"
+
+    defi-header:
+      headers:
+        customRequestHeaders:
+          Host: "defi.local"
+
+    ollama-header:
+      headers:
+        customRequestHeaders:
+          Host: "ollama.local"
+
+    linux-cache-01-header:
+      headers:
+        customRequestHeaders:
+          Host: "linux-cache-01.local"
+
+    linux-cache-02-header:
+      headers:
+        customRequestHeaders:
+          Host: "linux-cache-02.local"
+
+    dev-cache-01-header:
+      headers:
+        customRequestHeaders:
+          Host: "dev-cache-01.local"
+
+    dev-cache-02-header:
+      headers:
+        customRequestHeaders:
+          Host: "dev-cache-02.local"
