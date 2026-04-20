@@ -31,9 +31,19 @@ Edit `.env`:
 ```env
 CLOUDFLARE_EMAIL=your@email.com
 CF_DNS_API_TOKEN=your_cloudflare_api_token
+CLOUDFLARE_TUNNEL_TOKEN=your_cloudflare_tunnel_token
 ```
 
 `.env` is gitignored and will not be committed.
+
+### Environment variables reference
+
+| Variable | Required | Used by | Purpose |
+|----------|----------|---------|---------|
+| `CLOUDFLARE_EMAIL` | Yes | `traefik` | Used to populate Traefik ACME email (`TRAEFIK_CERTIFICATESRESOLVERS_LETSENCRYPT_ACME_EMAIL`) for Let's Encrypt registration. |
+| `CF_DNS_API_TOKEN` | Yes | `traefik` | Cloudflare DNS API token used by the ACME DNS challenge provider. |
+| `CLOUDFLARE_TUNNEL_TOKEN` | Yes (if running `cloudflare` service) | `cloudflare` | Token passed to `cloudflared tunnel run --token ...` to establish the Cloudflare Tunnel. |
+| `TRAEFIK_CERTIFICATESRESOLVERS_LETSENCRYPT_ACME_EMAIL` | Set by compose | `traefik` container environment | Derived from `${CLOUDFLARE_EMAIL}` in `docker-compose.yml`; no separate `.env` entry is required. |
 
 ### 3. Start Traefik
 
@@ -81,6 +91,27 @@ http:
 ```
 
 Traefik watches `dynamic_conf.yml` for changes and reloads automatically — no restart required.
+
+## DNS services
+
+The following DNS routes are configured in `dynamic_conf.yml`:
+
+| Hostname | Upstream service target |
+|----------|-------------------------|
+| `dns.markridgwell.com` | `https://192.168.42.251`, `https://192.168.42.252`, `https://192.168.42.253`, `https://192.168.42.254` |
+| `dns-01.markridgwell.com` | `http://192.168.42.251:3000` |
+| `dns-02.markridgwell.com` | `http://192.168.42.252:3000` |
+| `dns-03.markridgwell.com` | `http://192.168.42.253:3000` |
+| `dns-04.markridgwell.com` | `http://192.168.42.254:3000` |
+
+### TLS and Host behavior for `dns.markridgwell.com`
+
+- Upstream TLS uses a dedicated `serversTransports.dns` transport.
+- `insecureSkipVerify: true` is enabled to allow self-signed backend certificates.
+- `serverName: "dns.markridgwell.com"` is set so SNI matches the backend certificate name.
+- Middleware `dns-header` sets `Host: dns.markridgwell.com` on forwarded requests.
+
+The `dns-01` to `dns-04` routes forward to HTTP backends on port `3000` and each has a host-specific header middleware.
 
 ## Dashboard
 
