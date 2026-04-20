@@ -291,6 +291,10 @@ http:
     pacman-service:
       loadBalancer:
         serversTransport: pacman
+        healthCheck:
+          path: /ping
+          interval: 30s
+          timeout: 5s
         servers:
           - url: "https://192.168.150.200:7777"
           - url: "https://192.168.150.201:7777"
@@ -298,6 +302,10 @@ http:
     aur-service:
       loadBalancer:
         serversTransport: aur
+        healthCheck:
+          path: /ping
+          interval: 30s
+          timeout: 5s
         servers:
           - url: "https://192.168.150.200:7776"
           - url: "https://192.168.150.201:7776"
@@ -305,6 +313,10 @@ http:
     flathub-service:
       loadBalancer:
         serversTransport: flathub
+        healthCheck:
+          path: /ping
+          interval: 30s
+          timeout: 5s
         servers:
           - url: "https://192.168.150.200:7777"
           - url: "https://192.168.150.201:7777"
@@ -338,11 +350,19 @@ http:
 
     docker-registry-service:
       loadBalancer:
+        healthCheck:
+          path: /v2/
+          interval: 30s
+          timeout: 5s
         servers:
           - url: "http://192.168.150.202:8080"
 
     docker-cache-service:
       loadBalancer:
+        healthCheck:
+          path: /v2/
+          interval: 30s
+          timeout: 5s
         servers:
           - url: "http://192.168.150.202:8081"
 
