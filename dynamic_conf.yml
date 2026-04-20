@@ -1,14 +1,4 @@
 # dynamic_conf.yml
-tls:
-  stores:
-    default:
-      defaultGeneratedCert:
-        resolver: letsencrypt
-        domain:
-          main: "markridgwell.com"
-          sans:
-            - "*.markridgwell.com"
-
 http:
   routers:
     # Dashboard router
@@ -19,6 +9,10 @@ http:
         - web-secure
       tls:
         certResolver: letsencrypt
+        domains:
+          - main: "markridgwell.com"
+            sans:
+              - "*.markridgwell.com"
       # No middleware for authentication now
 
     # API NuGet router
