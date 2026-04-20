@@ -1,5 +1,9 @@
 # dynamic_conf.yml
 http:
+  serversTransports:
+    insecure:
+      insecureSkipVerify: true
+
   routers:
     # Dashboard router
     traefik-dashboard:
@@ -245,12 +249,14 @@ http:
     # Services for each router
     pacman-service:
       loadBalancer:
+        serversTransport: insecure
         servers:
           - url: "https://192.168.150.200:7777"
           - url: "https://192.168.150.201:7777"
 
     aur-service:
       loadBalancer:
+        serversTransport: insecure
         servers:
           - url: "https://192.168.150.200:7776"
           - url: "https://192.168.150.201:7776"
@@ -263,6 +269,7 @@ http:
 
     aur-repo-service:
       loadBalancer:
+        serversTransport: insecure
         servers:
           - url: "https://192.168.150.10:5555"
           - url: "https://192.168.150.20:5555"
@@ -299,38 +306,45 @@ http:
 
     mastodon-service:
       loadBalancer:
+        serversTransport: insecure
         servers:
           - url: "https://192.168.150.152:443"
 
     defi-service:
       loadBalancer:
+        serversTransport: insecure
         servers:
           - url: "https://192.168.150.10:5555"
           - url: "https://192.168.150.20:5555"
 
     ollama-service:
       loadBalancer:
+        serversTransport: insecure
         servers:
           - url: "https://192.168.150.10:5555"
           - url: "https://192.168.150.20:5555"
 
     linux-cache-01-service:
       loadBalancer:
+        serversTransport: insecure
         servers:
           - url: "https://192.168.150.200:8080"
 
     linux-cache-02-service:
       loadBalancer:
+        serversTransport: insecure
         servers:
           - url: "https://192.168.150.201:8080"
 
     dev-cache-01-service:
       loadBalancer:
+        serversTransport: insecure
         servers:
           - url: "https://192.168.150.100:8080"
 
     dev-cache-02-service:
       loadBalancer:
+        serversTransport: insecure
         servers:
           - url: "https://192.168.150.101:8080"
 
@@ -340,6 +354,7 @@ http:
           path: /ping
           interval: 30s
           timeout: 5s
+        serversTransport: insecure
         servers:
           - url: "https://192.168.150.100:5555"
           - url: "https://192.168.150.101:5555"
@@ -350,6 +365,7 @@ http:
           path: /ping
           interval: 30s
           timeout: 5s
+        serversTransport: insecure
         servers:
           - url: "https://192.168.150.100:5555"
           - url: "https://192.168.150.101:5555"
@@ -360,6 +376,7 @@ http:
           path: /ping
           interval: 30s
           timeout: 5s
+        serversTransport: insecure
         servers:
           - url: "https://192.168.150.100:5555"
           - url: "https://192.168.150.101:5555"
@@ -370,6 +387,7 @@ http:
           path: /-/ping
           interval: 30s
           timeout: 5s
+        serversTransport: insecure
         servers:
           - url: "https://192.168.150.100:5555"
           - url: "https://192.168.150.101:5555"
@@ -380,6 +398,7 @@ http:
           path: /ping
           interval: 30s
           timeout: 5s
+        serversTransport: insecure
         servers:
           - url: "https://192.168.150.100:5555"
           - url: "https://192.168.150.101:5555"
