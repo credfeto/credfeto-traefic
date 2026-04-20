@@ -246,117 +246,117 @@ http:
     pacman-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.200:7777"
-          - url: "https://192.168.10.201:7777"
+          - url: "https://192.168.150.200:7777"
+          - url: "https://192.168.150.201:7777"
 
     aur-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.200:7776"
-          - url: "https://192.168.10.201:7776"
+          - url: "https://192.168.150.200:7776"
+          - url: "https://192.168.150.201:7776"
 
     flathub-service:
       loadBalancer:
         servers:
-          - url: "http://192.168.10.200:7777"
-          - url: "http://192.168.10.201:7777"
+          - url: "http://192.168.150.200:7777"
+          - url: "http://192.168.150.201:7777"
 
     aur-repo-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "https://192.168.150.10:5555"
+          - url: "https://192.168.150.20:5555"
 
     photos-service:
       loadBalancer:
         servers:
-          - url: "http://192.168.10.154:2283"
+          - url: "http://192.168.150.154:2283"
 
     homeassistant-service:
       loadBalancer:
         servers:
-          - url: "http://192.168.10.10:8123"
+          - url: "http://192.168.150.10:8123"
 
     audiobookshelf-service:
       loadBalancer:
         servers:
-          - url: "http://192.168.10.16:8080"
+          - url: "http://192.168.150.16:8080"
 
     home-service:
       loadBalancer:
         servers:
-          - url: "http://192.168.10.150:8080"
+          - url: "http://192.168.150.150:8080"
 
     docker-registry-service:
       loadBalancer:
         servers:
-          - url: "http://192.168.10.202:8080"
+          - url: "http://192.168.150.202:8080"
 
     docker-cache-service:
       loadBalancer:
         servers:
-          - url: "http://192.168.10.202:8081"
+          - url: "http://192.168.150.202:8081"
 
     mastodon-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.152:443"
+          - url: "https://192.168.150.152:443"
 
     defi-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "https://192.168.150.10:5555"
+          - url: "https://192.168.150.20:5555"
 
     ollama-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "https://192.168.150.10:5555"
+          - url: "https://192.168.150.20:5555"
 
     linux-cache-01-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.200:8080"
+          - url: "https://192.168.150.200:8080"
 
     linux-cache-02-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.201:8080"
+          - url: "https://192.168.150.201:8080"
 
     dev-cache-01-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.100:8080"
+          - url: "https://192.168.150.100:8080"
 
     dev-cache-02-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.101:8080"
+          - url: "https://192.168.150.101:8080"
 
     api-nuget-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.100:5555"
-          - url: "https://192.168.10.101:5555"
+          - url: "https://192.168.150.100:5555"
+          - url: "https://192.168.150.101:5555"
 
     funfair-nuget-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.100:5555"
-          - url: "https://192.168.10.101:5555"
+          - url: "https://192.168.150.100:5555"
+          - url: "https://192.168.150.101:5555"
 
     npm-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.100:5555"
-          - url: "https://192.168.10.101:5555"
+          - url: "https://192.168.150.100:5555"
+          - url: "https://192.168.150.101:5555"
 
     dotnet-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.100:5555"
-          - url: "https://192.168.10.101:5555"
+          - url: "https://192.168.150.100:5555"
+          - url: "https://192.168.150.101:5555"
 
   middlewares:
     # Middleware for each header
