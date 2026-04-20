@@ -219,20 +219,20 @@ http:
     pacman-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "https://192.168.10.200:7777"
+          - url: "https://192.168.10.201:7777"
 
     aur-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "https://192.168.10.200:7776"
+          - url: "https://192.168.10.201:7776"
 
     flathub-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "http://192.168.10.200:7777"
+          - url: "http://192.168.10.201:7777"
 
     aur-repo-service:
       loadBalancer:
@@ -297,14 +297,12 @@ http:
     linux-cache-01-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "https://192.168.10.200:8080"
 
     linux-cache-02-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "https://192.168.10.201:8080"
 
     dev-cache-01-service:
       loadBalancer:
