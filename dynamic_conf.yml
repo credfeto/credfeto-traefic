@@ -17,7 +17,8 @@ http:
       service: api@internal
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       # No middleware for authentication now
 
     # API NuGet router
@@ -26,7 +27,8 @@ http:
       service: api-nuget-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - api-nuget-header
 
@@ -36,7 +38,8 @@ http:
       service: funfair-nuget-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - funfair-nuget-header
 
@@ -46,7 +49,8 @@ http:
       service: funfair-nuget-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - funfair-prerelease-nuget-header
 
@@ -56,7 +60,8 @@ http:
       service: npm-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - npm-header
 
@@ -66,7 +71,8 @@ http:
       service: dotnet-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - dotnet-header
 
@@ -76,7 +82,8 @@ http:
       service: pacman-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - pacman-header
 
@@ -85,7 +92,8 @@ http:
       service: aur-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - aur-header
 
@@ -94,7 +102,8 @@ http:
       service: flathub-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - flathub-header
 
@@ -103,7 +112,8 @@ http:
       service: aur-repo-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - aur-repo-header
 
@@ -112,7 +122,8 @@ http:
       service: photos-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - photos-header
 
@@ -121,7 +132,8 @@ http:
       service: homeassistant-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - homeassistant-header
 
@@ -130,7 +142,8 @@ http:
       service: audiobookshelf-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - audiobookshelf-header
 
@@ -139,7 +152,8 @@ http:
       service: home-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - home-header
 
@@ -148,7 +162,8 @@ http:
       service: docker-registry-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - docker-registry-header
 
@@ -157,7 +172,8 @@ http:
       service: docker-cache-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - docker-cache-header
 
@@ -166,7 +182,8 @@ http:
       service: mastodon-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - mastodon-header
 
@@ -175,7 +192,8 @@ http:
       service: defi-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - defi-header
 
@@ -184,7 +202,8 @@ http:
       service: ollama-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - ollama-header
 
@@ -193,7 +212,8 @@ http:
       service: linux-cache-01-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - linux-cache-01-header
 
@@ -202,7 +222,8 @@ http:
       service: linux-cache-02-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - linux-cache-02-header
 
@@ -211,7 +232,8 @@ http:
       service: dev-cache-01-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - dev-cache-01-header
 
@@ -220,7 +242,8 @@ http:
       service: dev-cache-02-service
       entryPoints:
         - web-secure
-      tls: {}
+      tls:
+        certResolver: letsencrypt
       middlewares:
         - dev-cache-02-header
 
