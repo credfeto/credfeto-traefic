@@ -40,7 +40,7 @@ http:
     # Funfair Prerelease NuGet router
     funfair-prerelease-nuget-router:
       rule: "Host(`funfair-prerelease-nuget.markridgwell.com`)"
-      service: funfair-nuget-service
+      service: funfair-prerelease-nuget-service
       entryPoints:
         - web-secure
       tls:
@@ -336,24 +336,50 @@ http:
 
     api-nuget-service:
       loadBalancer:
+        healthCheck:
+          path: /ping
+          interval: 30s
+          timeout: 5s
         servers:
           - url: "https://192.168.150.100:5555"
           - url: "https://192.168.150.101:5555"
 
     funfair-nuget-service:
       loadBalancer:
+        healthCheck:
+          path: /ping
+          interval: 30s
+          timeout: 5s
+        servers:
+          - url: "https://192.168.150.100:5555"
+          - url: "https://192.168.150.101:5555"
+
+    funfair-prerelease-nuget-service:
+      loadBalancer:
+        healthCheck:
+          path: /ping
+          interval: 30s
+          timeout: 5s
         servers:
           - url: "https://192.168.150.100:5555"
           - url: "https://192.168.150.101:5555"
 
     npm-service:
       loadBalancer:
+        healthCheck:
+          path: /-/ping
+          interval: 30s
+          timeout: 5s
         servers:
           - url: "https://192.168.150.100:5555"
           - url: "https://192.168.150.101:5555"
 
     dotnet-service:
       loadBalancer:
+        healthCheck:
+          path: /ping
+          interval: 30s
+          timeout: 5s
         servers:
           - url: "https://192.168.150.100:5555"
           - url: "https://192.168.150.101:5555"
@@ -413,7 +439,7 @@ http:
     mastodon-header:
       headers:
         customRequestHeaders:
-          Host: "mastodon.local"
+          Host: "mastodon.markridgwell.com"
 
     defi-header:
       headers:
@@ -448,17 +474,17 @@ http:
     api-nuget-header:
       headers:
         customRequestHeaders:
-          Host: "api-nuget.local"
+          Host: "api.nuget.local"
 
     funfair-nuget-header:
       headers:
         customRequestHeaders:
-          Host: "funfair-nuget.local"
+          Host: "funfair.nuget.local"
 
     funfair-prerelease-nuget-header:
       headers:
         customRequestHeaders:
-          Host: "funfair-prerelease-nuget.local"
+          Host: "funfair-prerelease.nuget.local"
 
     npm-header:
       headers:
@@ -468,4 +494,4 @@ http:
     dotnet-header:
       headers:
         customRequestHeaders:
-          Host: "dotnet.local"
+          Host: "builds.dotnet.local"
