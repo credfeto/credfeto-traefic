@@ -309,38 +309,36 @@ http:
     dev-cache-01-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "https://192.168.10.100:8080"
 
     dev-cache-02-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "https://192.168.10.101:8080"
 
     api-nuget-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "https://192.168.10.100:5555"
+          - url: "https://192.168.10.101:5555"
 
     funfair-nuget-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "https://192.168.10.100:5555"
+          - url: "https://192.168.10.101:5555"
 
     npm-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "https://192.168.10.100:5555"
+          - url: "https://192.168.10.101:5555"
 
     dotnet-service:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.10:5555"
-          - url: "https://192.168.10.20:5555"
+          - url: "https://192.168.10.100:5555"
+          - url: "https://192.168.10.101:5555"
 
   middlewares:
     # Middleware for each header
