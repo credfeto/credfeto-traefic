@@ -8,6 +8,20 @@ die() {
     exit 1
 }
 
+check_env_var() {
+    var=$1
+    value=$(grep -E "^${var}=" .env 2>/dev/null | cut -d '=' -f2-)
+    if [ -z "$value" ]; then
+        die "Missing or empty required variable '$var' in .env"
+    fi
+}
+
+# 0. Validate .env
+[ -f .env ] || die ".env file not found - copy .env.example and fill in your credentials"
+check_env_var CLOUDFLARE_EMAIL
+check_env_var CF_DNS_API_TOKEN
+check_env_var CLOUDFLARE_TUNNEL_TOKEN
+
 # 1. Pull latest config
 git pull || die "Failed to pull latest changes"
 
