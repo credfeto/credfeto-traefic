@@ -20,7 +20,7 @@ services:
     image: cloudflare/cloudflared:latest
     container_name: cloudflare
     restart: always
-    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
+    command: tunnel --no-autoupdate run --token $CLOUDFLARE_TUNNEL_TOKEN
     depends_on:
       traefik:
         condition: service_started
