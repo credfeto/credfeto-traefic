@@ -31,7 +31,7 @@ certificatesResolvers:
   letsencrypt:
     acme:
       email: ${CLOUDFLARE_EMAIL}
-      storage: /etc/traefik/acme.json
+      storage: /etc/traefik/acme/acme.json
       dnsChallenge:
         provider: cloudflare
         delayBeforeCheck: 0

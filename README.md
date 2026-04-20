@@ -10,13 +10,12 @@ Traefik v2.9 reverse proxy using Let's Encrypt TLS via Cloudflare DNS challenge.
 
 ## First-time setup
 
-### 1. Create the ACME storage file
+### 1. Create the ACME volume
 
-Traefik requires this file to exist with strict permissions before starting:
+Traefik stores Let's Encrypt certificates in a named Docker volume that must be created before starting:
 
 ```bash
-sudo touch /etc/traefik/acme.json
-sudo chmod 600 /etc/traefik/acme.json
+docker volume create traefik-acme
 ```
 
 ### 2. Create the `.env` file
@@ -48,7 +47,7 @@ docker compose up -d
 |------|---------|
 | `traefik.yml` | Static configuration — entrypoints, ACME, providers |
 | `dynamic_conf.yml` | Dynamic configuration — routers, services, middlewares |
-| `/etc/traefik/acme.json` | Let's Encrypt certificate storage (on host) |
+| `traefik-acme` (Docker volume) | Let's Encrypt certificate storage |
 
 ## Adding a new service
 

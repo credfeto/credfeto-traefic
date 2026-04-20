@@ -2,6 +2,7 @@ services:
   traefik:
     image: "traefik:v2.9"  # Use latest stable version of Traefik
     container_name: "traefik"
+    restart: always
     command:
       - "--configFile=/etc/traefik/traefik.yml"
     environment:
@@ -13,7 +14,16 @@ services:
     volumes:
       - "./traefik.yml:/etc/traefik/traefik.yml"
       - "./dynamic_conf.yml:/etc/traefik/dynamic_conf.yml"
-      - "/etc/traefik/acme.json:/etc/traefik/acme.json"  # Storage for ACME (Let's Encrypt)
+      - "traefik-acme:/etc/traefik/acme"
+
+  cloudflare:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflare
+    restart: always
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
+    depends_on:
+      traefik:
+        condition: service_started
 
   watchtower:
     image: nickfedor/watchtower:latest
@@ -21,3 +31,8 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
     command: --interval 86400
+
+volumes:
+  traefik-acme:
+    name: traefik-acme
+    external: true
