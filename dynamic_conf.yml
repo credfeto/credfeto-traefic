@@ -1,4 +1,14 @@
 # dynamic_conf.yml
+tls:
+  stores:
+    default:
+      defaultGeneratedCert:
+        resolver: letsencrypt
+        domain:
+          main: "markridgwell.com"
+          sans:
+            - "*.markridgwell.com"
+
 http:
   routers:
     # Dashboard router
