@@ -1,4 +1,10 @@
 # dynamic_conf.yml
+tls:
+  options:
+    default:
+      minVersion: VersionTLS13
+      sniStrict: true
+
 http:
   serversTransports:
     pacman:
