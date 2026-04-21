@@ -47,6 +47,8 @@ http:
     dotnet:
       insecureSkipVerify: true
       serverName: "builds.dotnet.local"
+    homeassistant-h1:
+      disableHTTP2: true
 
   routers:
     # Dashboard router
@@ -391,6 +393,7 @@ http:
 
     homeassistant-service:
       loadBalancer:
+        serversTransport: homeassistant-h1
         servers:
           - url: "http://192.168.34.8:8123"
 
