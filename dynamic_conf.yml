@@ -54,7 +54,7 @@ http:
       rule: "Host(`proxy.markridgwell.com`)"
       service: api@internal
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
         domains:
@@ -68,7 +68,7 @@ http:
       rule: "Host(`api-nuget.markridgwell.com`)"
       service: api-nuget-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -79,7 +79,7 @@ http:
       rule: "Host(`funfair-nuget.markridgwell.com`)"
       service: funfair-nuget-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -90,7 +90,7 @@ http:
       rule: "Host(`funfair-prerelease-nuget.markridgwell.com`)"
       service: funfair-prerelease-nuget-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -101,7 +101,7 @@ http:
       rule: "Host(`npm.markridgwell.com`)"
       service: npm-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -112,7 +112,7 @@ http:
       rule: "Host(`dotnet.markridgwell.com`)"
       service: dotnet-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -123,7 +123,7 @@ http:
       rule: "Host(`pacman.markridgwell.com`)"
       service: pacman-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -133,7 +133,7 @@ http:
       rule: "Host(`aur.markridgwell.com`)"
       service: aur-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -143,7 +143,7 @@ http:
       rule: "Host(`flathub.markridgwell.com`)"
       service: flathub-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -153,7 +153,7 @@ http:
       rule: "Host(`aur-repo.markridgwell.com`)"
       service: aur-repo-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -163,7 +163,7 @@ http:
       rule: "Host(`photos.markridgwell.com`)"
       service: photos-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -173,7 +173,7 @@ http:
       rule: "Host(`homeassistant.markridgwell.com`)"
       service: homeassistant-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -183,7 +183,7 @@ http:
       rule: "Host(`audiobookshelf.markridgwell.com`)"
       service: audiobookshelf-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -193,8 +193,8 @@ http:
       rule: "Host(`home.markridgwell.com`)"
       service: home-service
       entryPoints:
-        - web-secure
-        - web-446
+        - web-general
+        - web-home
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -204,8 +204,8 @@ http:
       rule: "Host(`docker-registry.markridgwell.com`)"
       service: docker-registry-service
       entryPoints:
-        - web-secure
-        - web-444
+        - web-general
+        - web-docker-registry
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -215,7 +215,7 @@ http:
       rule: "Host(`docker-cache.markridgwell.com`)"
       service: docker-cache-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -225,8 +225,8 @@ http:
       rule: "Host(`mastodon.markridgwell.com`)"
       service: mastodon-service
       entryPoints:
-        - web-secure
-        - web-445
+        - web-general
+        - web-mastodon
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -236,7 +236,7 @@ http:
       rule: "Host(`defi.markridgwell.com`)"
       service: defi-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -246,7 +246,7 @@ http:
       rule: "Host(`ollama.markridgwell.com`)"
       service: ollama-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -256,7 +256,7 @@ http:
       rule: "Host(`linux-cache-01.markridgwell.com`)"
       service: linux-cache-01-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -266,7 +266,7 @@ http:
       rule: "Host(`linux-cache-02.markridgwell.com`)"
       service: linux-cache-02-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -276,7 +276,7 @@ http:
       rule: "Host(`dev-cache-01.markridgwell.com`)"
       service: dev-cache-01-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -286,7 +286,7 @@ http:
       rule: "Host(`dev-cache-02.markridgwell.com`)"
       service: dev-cache-02-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -296,7 +296,7 @@ http:
       rule: "Host(`dns.markridgwell.com`)"
       service: dns-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -306,7 +306,7 @@ http:
       rule: "Host(`dns-01.markridgwell.com`)"
       service: dns-01-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -316,7 +316,7 @@ http:
       rule: "Host(`dns-02.markridgwell.com`)"
       service: dns-02-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -326,7 +326,7 @@ http:
       rule: "Host(`dns-03.markridgwell.com`)"
       service: dns-03-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -336,7 +336,7 @@ http:
       rule: "Host(`dns-04.markridgwell.com`)"
       service: dns-04-service
       entryPoints:
-        - web-secure
+        - web-general
       tls:
         certResolver: letsencrypt
       middlewares:

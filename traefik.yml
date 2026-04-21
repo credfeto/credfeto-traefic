@@ -10,7 +10,7 @@ accessLog:
   format: common
 
 entryPoints:
-  web-secure:
+  web-general:
     address: ":443"
     http:
       tls:
@@ -23,7 +23,7 @@ entryPoints:
         - "192.168.0.0/16"
         - "fc00::/7"
         - "fe80::/10"
-  web-444:
+  web-docker-registry:
     address: ":444"
     http:
       tls:
@@ -36,7 +36,7 @@ entryPoints:
         - "192.168.0.0/16"
         - "fc00::/7"
         - "fe80::/10"
-  web-445:
+  web-mastodon:
     address: ":445"
     http:
       tls:
@@ -49,7 +49,7 @@ entryPoints:
         - "192.168.0.0/16"
         - "fc00::/7"
         - "fe80::/10"
-  web-446:
+  web-home:
     address: ":446"
     http:
       tls:
