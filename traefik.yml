@@ -23,6 +23,45 @@ entryPoints:
         - "192.168.0.0/16"
         - "fc00::/7"
         - "fe80::/10"
+  web-444:
+    address: ":444"
+    http:
+      tls:
+        certResolver: letsencrypt
+    http3: {}
+    forwardedHeaders:
+      trustedIPs:
+        - "10.0.0.0/8"
+        - "172.16.0.0/12"
+        - "192.168.0.0/16"
+        - "fc00::/7"
+        - "fe80::/10"
+  web-445:
+    address: ":445"
+    http:
+      tls:
+        certResolver: letsencrypt
+    http3: {}
+    forwardedHeaders:
+      trustedIPs:
+        - "10.0.0.0/8"
+        - "172.16.0.0/12"
+        - "192.168.0.0/16"
+        - "fc00::/7"
+        - "fe80::/10"
+  web-446:
+    address: ":446"
+    http:
+      tls:
+        certResolver: letsencrypt
+    http3: {}
+    forwardedHeaders:
+      trustedIPs:
+        - "10.0.0.0/8"
+        - "172.16.0.0/12"
+        - "192.168.0.0/16"
+        - "fc00::/7"
+        - "fe80::/10"
 
 # Requires CF_DNS_API_TOKEN environment variable for Cloudflare
 certificatesResolvers:
