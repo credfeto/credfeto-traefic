@@ -16,9 +16,7 @@ http:
     aur-repo:
       insecureSkipVerify: true
       serverName: "aur-repo.local"
-    mastodon:
-      insecureSkipVerify: true
-      serverName: "mastodon.markridgwell.com"
+
     defi:
       insecureSkipVerify: true
       serverName: "defi.local"
@@ -235,23 +233,6 @@ http:
       middlewares:
         - docker-cache-header
 
-    mastodon-router:
-      rule: "Host(`mastodon.markridgwell.com`)"
-      service: mastodon-service
-      entryPoints:
-        - web-general
-      tls:
-        certResolver: letsencrypt
-      middlewares:
-        - mastodon-header
-
-    mastodon-http-router:
-      rule: "PathPrefix(`/`)"
-      service: mastodon-service
-      entryPoints:
-        - web-mastodon
-      middlewares:
-        - mastodon-header
 
     defi-router:
       rule: "Host(`defi.markridgwell.com`)"
@@ -451,11 +432,6 @@ http:
         servers:
           - url: "http://192.168.150.202:8081"
 
-    mastodon-service:
-      loadBalancer:
-        serversTransport: mastodon
-        servers:
-          - url: "https://192.168.150.152:443"
 
     defi-service:
       loadBalancer:
@@ -622,10 +598,6 @@ http:
         customRequestHeaders:
           Host: "docker-cache.local"
 
-    mastodon-header:
-      headers:
-        customRequestHeaders:
-          Host: "mastodon.markridgwell.com"
 
     defi-header:
       headers:
