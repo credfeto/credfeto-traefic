@@ -263,6 +263,14 @@ http:
       middlewares:
         - defi-header
 
+    defi-http-router:
+      rule: "Host(`defi.markridgwell.com`)"
+      service: defi-service
+      entryPoints:
+        - web-defi
+      middlewares:
+        - defi-header
+
     ollama-router:
       rule: "Host(`ollama.markridgwell.com`)"
       service: ollama-service
@@ -453,8 +461,7 @@ http:
       loadBalancer:
         serversTransport: defi
         servers:
-          - url: "https://192.168.150.10:5555"
-          - url: "https://192.168.150.20:5555"
+          - url: "https://192.168.150.12"
 
     ollama-service:
       loadBalancer:

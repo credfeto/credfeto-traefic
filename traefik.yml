@@ -50,6 +50,15 @@ entryPoints:
         - "192.168.0.0/16"
         - "fc00::/7"
         - "fe80::/10"
+  web-defi:
+    address: ":447"
+    forwardedHeaders:
+      trustedIPs:
+        - "10.0.0.0/8"
+        - "172.16.0.0/12"
+        - "192.168.0.0/16"
+        - "fc00::/7"
+        - "fe80::/10"
 
 # Requires CF_DNS_API_TOKEN environment variable for Cloudflare
 certificatesResolvers:
