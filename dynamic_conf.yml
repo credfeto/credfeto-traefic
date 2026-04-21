@@ -200,7 +200,7 @@ http:
         - home-header
 
     home-http-router:
-      rule: "Host(`home.markridgwell.com`)"
+      rule: "PathPrefix(`/`)"
       service: home-service
       entryPoints:
         - web-home
@@ -218,7 +218,7 @@ http:
         - docker-registry-header
 
     docker-registry-http-router:
-      rule: "Host(`docker-registry.markridgwell.com`)"
+      rule: "PathPrefix(`/`)"
       service: docker-registry-service
       entryPoints:
         - web-docker-registry
@@ -246,7 +246,7 @@ http:
         - mastodon-header
 
     mastodon-http-router:
-      rule: "Host(`mastodon.markridgwell.com`)"
+      rule: "PathPrefix(`/`)"
       service: mastodon-service
       entryPoints:
         - web-mastodon
@@ -264,7 +264,7 @@ http:
         - defi-header
 
     defi-http-router:
-      rule: "Host(`defi.markridgwell.com`)"
+      rule: "PathPrefix(`/`)"
       service: defi-service
       entryPoints:
         - web-defi
