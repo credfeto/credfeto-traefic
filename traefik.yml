@@ -25,10 +25,6 @@ entryPoints:
         - "fe80::/10"
   web-docker-registry:
     address: ":444"
-    http:
-      tls:
-        certResolver: letsencrypt
-    http3: {}
     forwardedHeaders:
       trustedIPs:
         - "10.0.0.0/8"
@@ -38,10 +34,6 @@ entryPoints:
         - "fe80::/10"
   web-mastodon:
     address: ":445"
-    http:
-      tls:
-        certResolver: letsencrypt
-    http3: {}
     forwardedHeaders:
       trustedIPs:
         - "10.0.0.0/8"
@@ -51,10 +43,6 @@ entryPoints:
         - "fe80::/10"
   web-home:
     address: ":446"
-    http:
-      tls:
-        certResolver: letsencrypt
-    http3: {}
     forwardedHeaders:
       trustedIPs:
         - "10.0.0.0/8"
