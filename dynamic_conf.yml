@@ -352,15 +352,15 @@ http:
       middlewares:
         - dns-04-header
 
-    github-api-proxy-router:
-      rule: "Host(`github-api-proxy.markridgwell.com`)"
-      service: github-api-proxy-service
+    github-api-router:
+      rule: "Host(`github-api.markridgwell.com`)"
+      service: github-api-service
       entryPoints:
         - web-general
       tls:
         certResolver: letsencrypt
       middlewares:
-        - github-api-proxy-header
+        - github-api-header
 
   services:
     # Services for each router
@@ -556,7 +556,7 @@ http:
         servers:
           - url: "http://192.168.42.254:3000"
 
-    github-api-proxy-service:
+    github-api-service:
       loadBalancer:
         servers:
           - url: "http://192.168.150.15:3000"
@@ -694,7 +694,7 @@ http:
         customRequestHeaders:
           Host: "dns-04.markridgwell.com"
 
-    github-api-proxy-header:
+    github-api-header:
       headers:
         customRequestHeaders:
-          Host: "github-api-proxy.markridgwell.com"
+          Host: "github-api.markridgwell.com"
